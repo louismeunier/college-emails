@@ -23,8 +23,8 @@ jobs:
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
-          git commit -m "Update data" -a
+          git add .
+          git commit -m "Update data"
       - name: push
         uses: ad-m/github-push-action@master
         with:
