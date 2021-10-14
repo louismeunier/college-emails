@@ -11,7 +11,7 @@ jobs:
     steps:
       - name: Main
         id: main
-        uses: ./scripts/
+        uses: louismeunier/college-emails/.github/workflows/action.yml@latest
         env:
           CREDENTIALS: ${{ secrets.CREDENTIALS }}
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
