@@ -19,6 +19,9 @@ jobs:
           echo ACCESS_TOKEN =${{ secrets.ACCESS_TOKEN }} >> .env
           cd scripts && yarn && cd ..
           node scripts/index.js
+        env:
+          CREDENTIALS: ${{ secrets.CREDENTIALS }}
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
       - name: commit
         run: |
           git config --global user.name "github-actions[bot]"
@@ -29,6 +32,3 @@ jobs:
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-        env:
-          CREDENTIALS: ${{ secrets.CREDENTIALS }}
-          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
