@@ -1,0 +1,23 @@
+on: 
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: '0 0 1 * *'
+jobs: 
+  generate_data_job:
+    runs-on: macos-latest
+    name: Downloads and parses the latest email data
+    steps:
+      - name: Main
+        id: main
+        uses: louismeunier/college-emails
+        with:
+          who-to-greet: 'Louis Meunier'
+        env:
+          CREDENTIALS: ${{ secrets.CREDENTIALS }}
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+        run: |
+          touch .env
+          echo CREDENTIALS =${{ secrets.CREDENTIALS }} >> .env
+          echo ACCESS_TOKEN =${{ secrets.ACCESS_TOKEN }} >> .env
