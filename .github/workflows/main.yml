@@ -12,9 +12,6 @@ jobs:
       - name: create & parse data locally
         working-directory: ./
         run: |
-          pwd
-          ls
-          find scripts
           touch scripts/.env
           echo CREDENTIALS =${{ secrets.CREDENTIALS }} >> .env
           echo ACCESS_TOKEN =${{ secrets.ACCESS_TOKEN }} >> .env
@@ -26,7 +23,7 @@ jobs:
 
           git add -A
           git commit -m "Update test.txt"
-          git push
+          git push origin main
         env:
           CREDENTIALS: ${{ secrets.CREDENTIALS }}
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}

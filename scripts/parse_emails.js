@@ -46,6 +46,7 @@ function parseEmails(urls) {
     })
 
     fs.writeFile("./client/src/data.json", JSON.stringify(formatted_statistics), (err)=>{if (err) throw err});
+    fs.writeFile("./client/src/version.json", JSON.stringify(), (err) => { if (err) throw err })
     console.log("BY COLLEGE");
     console.table(formatted_statistics.byCollege);
     console.log("BY STATE");
