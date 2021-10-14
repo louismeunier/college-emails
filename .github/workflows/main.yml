@@ -14,6 +14,12 @@ jobs:
   generate_data_job:
     runs-on: macos-latest
     uses: louismeunier/college-emails/.github/workflows/action.yml@main
-    secrets:
-      CREDENTIALS: ${{ secrets.CREDENTIALS }}
-      ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Main step
+        uses: ./
+        id: gen
+        secrets:
+          CREDENTIALS: ${{ secrets.CREDENTIALS }}
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
