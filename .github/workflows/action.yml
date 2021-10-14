@@ -1,3 +1,15 @@
+on: 
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: '0 0 1 * *'
+  workflow_call:
+    secrets:
+      CREDENTIALS:
+        required: true
+      ACCESS_TOKEN:
+        required: true
 name: 'generate_data_job'
 description: 'downloads and parses email data'
 runs:
