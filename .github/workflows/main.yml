@@ -19,15 +19,13 @@ jobs:
           echo ACCESS_TOKEN =${{ secrets.ACCESS_TOKEN }} >> .env
           cd scripts && yarn && cd ..
           node scripts/index.js
-        env:
-          CREDENTIALS: ${{ secrets.CREDENTIALS }}
-          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-      - name: commit
-        run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add .
           git commit -m "Update data"
+        env:
+          CREDENTIALS: ${{ secrets.CREDENTIALS }}
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
       - name: push
         uses: ad-m/github-push-action@master
         with:
