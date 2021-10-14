@@ -3,7 +3,7 @@ const readline = require('readline');
 const { google } = require('googleapis');
 
 const SCOPES = ['https://www.googleapis.com/auth/gmail.readonly'];
-const TOKEN_PATH = 'token.json';
+const TOKEN_PATH = 'scripts/token.json';
 
 /**
  * Authenticates with Google and passed auth object to callback
@@ -11,7 +11,7 @@ const TOKEN_PATH = 'token.json';
  */
 function authorizedFunction() {
   return new Promise((res, rej) => {
-    fs.readFile ('credentials.json', (err, content) => {
+    fs.readFile ('./scripts/credentials.json', (err, content) => {
       if (err) rej(err);
         res(authorize(JSON.parse(content)));
       });
