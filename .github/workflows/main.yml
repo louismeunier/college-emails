@@ -11,7 +11,7 @@ jobs:
     steps:
       - name: Main
         id: main
-        uses: ./scripts/action
+        uses: scripts/
         env:
           CREDENTIALS: ${{ secrets.CREDENTIALS }}
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
