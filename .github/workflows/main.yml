@@ -9,7 +9,11 @@ jobs:
     runs-on: macos-latest
     steps:
       - name: get and parse data
+        working-directory: ./
         run: |
+          pwd
+          ls
+          find scripts
           touch scripts/.env
           echo CREDENTIALS =${{ secrets.CREDENTIALS }} >> .env
           echo ACCESS_TOKEN =${{ secrets.ACCESS_TOKEN }} >> .env
