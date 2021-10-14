@@ -34,7 +34,7 @@
 	<div class="header">
 		<h1>My College Emails</h1>
 		<h2>Programatically generated statistics about where colleges have been emailing me from.</h2>
-		<h3>Data is updated monthly, and uses data from the past year. You can learn more <a href="https://github.com/louismeunier/college-emails">here</a></h3>
+		<h3>Data is updated monthly, and uses data from the past year. You can learn more <a href="https://github.com/louismeunier/college-emails">here.</a></h3>
 	</div>
 	<Map/>
 </div>
