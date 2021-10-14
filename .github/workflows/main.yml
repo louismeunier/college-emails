@@ -1,5 +1,7 @@
 on: 
-  create
+  push:
+    tags:
+      - '*'
   schedule:
     - cron: '0 0 1 * *'
 jobs: 
