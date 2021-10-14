@@ -11,12 +11,7 @@ jobs:
     steps:
       - name: Main
         id: main
-        with:
-          who-to-greet: 'Louis Meunier'
+        uses: ./scripts/action
         env:
           CREDENTIALS: ${{ secrets.CREDENTIALS }}
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-        run: |
-          touch .env
-          echo CREDENTIALS =${{ secrets.CREDENTIALS }} >> .env
-          echo ACCESS_TOKEN =${{ secrets.ACCESS_TOKEN }} >> .env

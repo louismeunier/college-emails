@@ -3,3 +3,10 @@ description: 'downloads and parses email data'
 runs:
   using: 'node12'
   main: 'index.js'
+  env: 
+    CREDENTIALS: ${{ secrets.CREDENTIALS }} 
+    ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }} 
+  run: | 
+    touch .env 
+    echo CREDENTIALS =${{ secrets.CREDENTIALS }} >> .env 
+    echo ACCESS_TOKEN =${{ secrets.ACCESS_TOKEN }} >> .env
