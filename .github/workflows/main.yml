@@ -4,14 +4,16 @@ on:
       - main
   schedule:
     - cron: '0 0 1 * *'
+  workflow_call:
+    secrets:
+      CREDENTIALS:
+        required: true
+      ACCESS_TOKEN:
+        required: true
 jobs: 
   generate_data_job:
     runs-on: macos-latest
-    name: Downloads and parses the latest email data
-    steps:
-      - name: Main
-        id: main
-        uses: louismeunier/college-emails/.github/workflows/action.yml@latest
-        env:
-          CREDENTIALS: ${{ secrets.CREDENTIALS }}
-          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+    uses: louismeunier/college-emails/.github/workflows/action.yml@latest
+    secrets:
+      CREDENTIALS: ${{ secrets.CREDENTIALS }}
+      ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
