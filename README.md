@@ -1,6 +1,6 @@
-# my college emails
+# college-emails
 
-A set of scripts that programmatically analyze the emails I have received from colleges in the past year.
+Colleges love to send email advertisements, so much so that it becomes inbox clutter. This project serves to analyze this spam, and look at some interesting trends in the emails I've received in the past year regarding college.
 
 ## [`/scripts`](/scripts): a number of Node JS scripts to parse emails and get college data.
 
