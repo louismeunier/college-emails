@@ -11,7 +11,6 @@ jobs:
     steps:
       - name: Main
         id: main
-        uses: louismeunier/college-emails
         with:
           who-to-greet: 'Louis Meunier'
         env:
