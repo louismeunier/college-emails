@@ -8,6 +8,7 @@ jobs:
   generate_data_job:
     runs-on: macos-latest
     steps:
+      - uses: actions/checkout@v1
       - name: get and parse data
         working-directory: ./
         run: |
