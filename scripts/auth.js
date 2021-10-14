@@ -2,6 +2,14 @@ const fs = require('fs');
 const readline = require('readline');
 const { google } = require('googleapis');
 
+/**
+ * Returns one of passed arguments based on run environment
+ * @returns {boolean}
+ */
+function isProduction() {
+  return process.env.GITHUB_ACTIONS;
+}
+
 const SCOPES = ['https://www.googleapis.com/auth/gmail.readonly'];
 const TOKEN_PATH = 'scripts/token.json';
 
@@ -11,10 +19,12 @@ const TOKEN_PATH = 'scripts/token.json';
  */
 function authorizedFunction() {
   return new Promise((res, rej) => {
-    fs.readFile ('./scripts/credentials.json', (err, content) => {
-      if (err) rej(err);
-        res(authorize(JSON.parse(content)));
-      });
+    isProduction() 
+      ? res(authorize(JSON.parse(process.env.CREDENTIALS)))
+      : fs.readFile ('./scripts/credentials.json', (err, content) => {
+        if (err) rej(err);
+          res(authorize(JSON.parse(content)));
+        });    
   })   
 }
 
@@ -30,12 +40,16 @@ function authorize(credentials, callback) {
     const oAuth2Client = new google.auth.OAuth2(
         client_id, client_secret, redirect_uris[0]);
   
-    // Check if we have previously stored a token.
-    fs.readFile(TOKEN_PATH, (err, token) => {
-      if (err) return getNewToken(oAuth2Client, callback);
-      oAuth2Client.setCredentials(JSON.parse(token));
-      res(oAuth2Client);
-    });
+      if (isProduction()) {
+        oAuth2Client.setCredentials(JSON.parse(process.env.ACCESS_TOKEN));
+        res(oAuth2Client)
+      } else {
+        fs.readFile(TOKEN_PATH, (err, token) => {
+          if (err) return getNewToken(oAuth2Client, callback);
+          oAuth2Client.setCredentials(JSON.parse(token));
+          res(oAuth2Client);
+        });   
+      }
   })
 }
 

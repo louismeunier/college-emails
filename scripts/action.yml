@@ -1,0 +1,5 @@
+name: 'generate_data_job'
+description: 'downloads and parses email data'
+runs:
+  using: 'node12'
+  main: 'index.js'

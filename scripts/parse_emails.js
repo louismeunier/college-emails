@@ -1,5 +1,11 @@
 const fs = require("fs");
 const colleges = require("./data/colleges_full.json");
+const core = require('@actions/core');
+const github = require('@actions/github');
+
+function isProduction() {
+    return process.env.GITHUB_ACTIONS;
+}
 
 /**
  * @param {[]string} urls
