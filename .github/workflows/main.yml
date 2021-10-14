@@ -8,7 +8,7 @@ jobs:
   generate_data_job:
     runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
         with:
           fetch-depth: 0
       - name: create & parse data locally
@@ -19,13 +19,16 @@ jobs:
           echo ACCESS_TOKEN =${{ secrets.ACCESS_TOKEN }} >> .env
           cd scripts && yarn && cd ..
           node scripts/index.js
-
+      - name: commit
+        run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          git add .
-          git commit -m "Update data"
-          git push -u origin HEAD:main
+          git commit -m "Update data" -a
+      - name: push
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
         env:
           CREDENTIALS: ${{ secrets.CREDENTIALS }}
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
