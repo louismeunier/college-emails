@@ -4,22 +4,17 @@ on:
       - main
   schedule:
     - cron: '0 0 1 * *'
-  workflow_call:
-    secrets:
-      CREDENTIALS:
-        required: true
-      ACCESS_TOKEN:
-        required: true
 jobs: 
   generate_data_job:
     runs-on: macos-latest
-    uses: louismeunier/college-emails/.github/workflows/action.yml@main
     steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Main step
-        uses: ./
-        id: gen
-        secrets:
+      - name: get and parse data
+        run: |
+          touch scripts/.env
+          echo CREDENTIALS =${{ secrets.CREDENTIALS }} >> .env
+          echo ACCESS_TOKEN =${{ secrets.ACCESS_TOKEN }} >> .env
+          cd scripts && yarn && cd ..
+          node scripts/index.js
+        env:
           CREDENTIALS: ${{ secrets.CREDENTIALS }}
           ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
