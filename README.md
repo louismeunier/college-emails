@@ -16,3 +16,7 @@ A set of utilities used to download and parse the data found in [`data`](/script
 ## Data Credits
 
 The dataset used containing college websites, names, locations, etc. was found [here](https://data.ed.gov/dataset/college-scorecard-all-data-files-through-6-2020/resources).
+
+## * Note
+
+Because of the way emails are linked to their respective college (via the domain name of the sender), there are some emails that are unable to be linked to a college and are thus not included in the final statistics. This, however, only accounts for ~3% of all the emails parsed per run.
