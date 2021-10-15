@@ -1,11 +1,5 @@
 const fs = require("fs");
 const colleges = require("./data/colleges_full.json");
-const core = require('@actions/core');
-const github = require('@actions/github');
-
-function isProduction() {
-    return process.env.GITHUB_ACTIONS;
-}
 
 /**
  * @param {[]string} urls
@@ -46,11 +40,11 @@ function parseEmails(urls) {
     })
 
     fs.writeFile("./client/src/data.json", JSON.stringify(formatted_statistics), (err)=>{if (err) throw err});
-    //fs.writeFile("./client/src/version.json", JSON.stringify(), (err) => { if (err) throw err })
     console.log("BY COLLEGE");
     console.table(formatted_statistics.byCollege);
     console.log("BY STATE");
     console.table(formatted_statistics.byState);
+    console.log(failed_arr)
     console.log(`${Math.round((failed_arr.length/urls.length)*10000) / 100} % loss, due to missing emails. ${[...new Set(failed_arr)].length} unique emails not found.`)
 }
 
