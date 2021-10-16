@@ -5,7 +5,16 @@ const { google } = require('googleapis');
  * @param {string} email 
  */
 function parseURL(email) {
-    return email.slice(email.lastIndexOf("@")+1, email.length-1).split(".").slice(-2).join(".");
+    const domain = email.slice(
+        email.lastIndexOf("@")+1, 
+        email.includes(">") 
+            ? email.lastIndexOf(">")
+            : email.length
+    )
+        .split(".")
+        .slice(-2)
+        .join(".");
+    return domain
 }
 
 /**
