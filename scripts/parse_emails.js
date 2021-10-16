@@ -39,7 +39,7 @@ function parseEmails(urls) {
         }
     })
 
-    fs.writeFile("./client/src/data.json", JSON.stringify(formatted_statistics), (err)=>{if (err) throw err});
+    if (process.env.GITHUB_ACTIONS) fs.writeFile("./client/src/data.json", JSON.stringify(formatted_statistics), (err)=>{if (err) throw err});
     console.log("BY COLLEGE");
     console.table(formatted_statistics.byCollege);
     console.log("BY STATE");
