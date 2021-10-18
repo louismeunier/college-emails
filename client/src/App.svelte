@@ -1,6 +1,10 @@
 <script lang="ts">
 	import Graph from "./components/Graph.svelte";
-import Map from "./components/Map.svelte";
+	import Map from "./components/Map.svelte";
+	import { fly } from "svelte/transition"
+	import { onMount } from "svelte";
+	let visible = false;
+	onMount(() => visible = true)
 </script>
 
 <style>
@@ -38,7 +42,8 @@ import Map from "./components/Map.svelte";
 </style>
 
 <div class="main">
-	<div class="sub">
+	{#if visible}
+	<div transition:fly={{duration: 2100, delay: 100, y: -1000}}  class="sub">
 		<div class="header">
 			<h1>My College Emails</h1>
 			<h2>Programatically generated statistics about where colleges have been emailing me from.</h2>
@@ -49,4 +54,5 @@ import Map from "./components/Map.svelte";
 		<h2>Who?</h2>
 		<Graph/>
 	</div>	
+	{/if}
 </div>
