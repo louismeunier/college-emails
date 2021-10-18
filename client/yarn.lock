@@ -348,6 +348,11 @@ fill-range@^7.0.1:
   dependencies:
     to-regex-range "^5.0.1"
 
+frappe-charts@^1.6.2:
+  version "1.6.2"
+  resolved "https://registry.yarnpkg.com/frappe-charts/-/frappe-charts-1.6.2.tgz#4671a943a8606e5020180fa65c8ea1835c510baf"
+  integrity sha512-9TC3/+YVUi84yYoEbxFiSqu+1FQ5If/ydUNj6i8FRpwynd08t6a7RkS+IRJozAk6NfdL8/LVTTE1DUOjjKZZxg==
+
 fs.realpath@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/fs.realpath/-/fs.realpath-1.0.0.tgz#1504ad2523158caa40db4a2787cb01411994ea4f"
@@ -838,6 +843,14 @@ svelte-check@^2.0.0:
     svelte-preprocess "^4.0.0"
     typescript "*"
 
+svelte-frappe-charts@^1.9.0:
+  version "1.9.0"
+  resolved "https://registry.yarnpkg.com/svelte-frappe-charts/-/svelte-frappe-charts-1.9.0.tgz#4a5870fa7c632098a1331ceea386ef2d7bce7bb3"
+  integrity sha512-6qYNeet220X7FlOHyFJEreUbiHlxB0mjPkh47E8Je0MNScjBi6W6GAYmse3oDejygM8A1CAC3A4qeX3PGM9mpA==
+  dependencies:
+    frappe-charts "^1.6.2"
+    svelte "^3.40.1"
+
 svelte-preprocess@^4.0.0:
   version "4.9.8"
   resolved "https://registry.yarnpkg.com/svelte-preprocess/-/svelte-preprocess-4.9.8.tgz#fd40afebfb352f469beab289667485ebf0d811da"
@@ -850,10 +863,10 @@ svelte-preprocess@^4.0.0:
     sorcery "^0.10.0"
     strip-indent "^3.0.0"
 
-svelte@^3.0.0:
-  version "3.43.1"
-  resolved "https://registry.yarnpkg.com/svelte/-/svelte-3.43.1.tgz#8370c08a970bcc1c118baaa86a38fae82e0a8396"
-  integrity sha512-nvPIaKx4HLzYlSdquISZpgG1Kqr2VAWQjZOt3Iwm3UhbqmA0LnSx4k1YpRMEhjQYW3ZCqQoK8Egto9tv4YewMA==
+svelte@^3.40.1, svelte@^3.44.0:
+  version "3.44.0"
+  resolved "https://registry.yarnpkg.com/svelte/-/svelte-3.44.0.tgz#e6176cb3ad93846ddb4140e93f43098136b23f3b"
+  integrity sha512-zWACSJBSncGiDvFfYOMFGNV5zDLOlyhftmO5yOZ0lEtQMptpElaRtl39MWz1+lYCpwUq4F3Q2lTzI9TrTL+eMA==
 
 terser@^5.0.0:
   version "5.9.0"
