@@ -62,7 +62,7 @@
 <style>
 	.wrapper {
 		height: max-content;
-		width: 75%;
+
 		display: flex;
 		flex-direction: column-reverse;
 		gap: 2em;
