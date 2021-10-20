@@ -8,7 +8,7 @@ require('dotenv').config();
 authorizedFunction()
     .then(auth => getAllEmails(auth)
         .then(urls => {
-            fs.writeFile(`./client/src/${process.env.GITHUB_ACTIONS ? "dates.json" : "dev_dates.json"}`, JSON.stringify(urls.dates), (err)=>{if (err) throw err});
+            fs.writeFile("./client/src/dates.json", JSON.stringify(urls.dates), (err)=>{if (err) throw err; else {console.log("Successfully wrote file")}});
             parseEmails(urls.urls);
         })
     )
