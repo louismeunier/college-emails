@@ -2,7 +2,7 @@ const fs = require("fs");
 const colleges = require("./data/colleges_full.json");
 
 /**
- * @param {[]string} urls
+ * @param {string[]} urls
  */
 function parseEmails(urls) {
 
@@ -39,7 +39,7 @@ function parseEmails(urls) {
         }
     })
 
-    if (process.env.GITHUB_ACTIONS) fs.writeFile("./client/src/data.json", JSON.stringify(formatted_statistics), (err)=>{if (err) throw err});
+    fs.writeFile(`./client/src/${process.env.GITHUB_ACTIONS ? "data.json" : "dev_data.json"}`, JSON.stringify(formatted_statistics), (err)=>{if (err) throw err});
     console.log("BY COLLEGE");
     console.table(formatted_statistics.byCollege);
     console.log("BY STATE");

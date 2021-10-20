@@ -20,10 +20,11 @@ function parseURL(email) {
 /**
  * Gets all emails
  * @param {google.auth.OAuth2} auth 
- * @returns {Promise<string[]>}
+ * @returns {Promise<object>}
  */
 async function getAllEmails(auth) {
     let urls = [];
+    let dates = {};
     /**
      * Get email content
      * @param {gmail_v1.Params$Resource$Users$Messages$Get.id} id The ID of the message
@@ -39,6 +40,13 @@ async function getAllEmails(auth) {
         )
             .then(res => {
                 const filterForSender = res.data.payload.headers.filter(e=>e.name=="From");
+                const filterForDate = new Date(res.data.payload.headers.filter(a=>a.name=="Date")[0].value);
+                if (dates[filterForDate.toLocaleDateString()]) {
+                    dates[filterForDate.toLocaleDateString()]++
+                } else {
+                    dates[filterForDate.toLocaleDateString()] = 1;
+                }
+                
                 const email = filterForSender[0].value;
                 const url = parseURL(email);
                 urls.push(url);
@@ -89,7 +97,7 @@ async function getAllEmails(auth) {
             return getCollegeMessageIDs(auth, nextPageToken);
         } else {
             console.log("all results parsed")
-            return urls;
+            return {urls: urls, dates: dates};
         }
     }
 
