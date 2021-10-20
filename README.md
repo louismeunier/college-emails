@@ -2,9 +2,12 @@
 
 Colleges love to send email advertisements, so much so that it becomes inbox clutter. This project serves to analyze this spam, and look at some interesting trends in the emails I've received in the past year regarding college.
 
-## [`/clients`](/clients): a Svelte frontend of statistics hosted on Netlify.
+## [`/clients`](/clients) 
 
-## [`/scripts`](/scripts): a number of Node JS scripts to parse emails and get college data. These are designed to be used through [Github Actions](/.github/workflows/main.yml), but can also be run locally.
+A Svelte frontend of statistics hosted on Netlify.
+
+## [`/scripts`](/scripts)
+A number of Node JS scripts to parse emails and get college data. These are designed to be used through [Github Actions](/.github/workflows/main.yml), but can also be run locally.
 
 ### [`/scripts/index.js`](/scripts/index.js)
 Run all scripts, including downloading emails and generating statistics
