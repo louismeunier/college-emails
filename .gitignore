@@ -5,4 +5,8 @@ token.json
 constants
 client_s
 .env
+
+# dev-side generated files
 dev_data.json
+dev_dates.json
+dev_updated.json

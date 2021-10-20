@@ -6,6 +6,7 @@
 
 	import { fly } from "svelte/transition"
 	import { onMount } from "svelte";
+import Footer from "./components/Footer.svelte";
 	
 	let visible = false;
 	onMount(() => visible = true)
@@ -29,13 +30,14 @@
 		place-items: left;
 		gap: 5em;
 	}
+
 	h1 {
 		text-decoration: double underline;
 		font-size: 3em;
 		color: black;
 	}
 
-	h3 {
+	:global(h3) {
 		font-style: italic;
 		color: gray;
 		font-size: 0.8em;
@@ -62,6 +64,7 @@
 			<Graph/>
 			<Link href="when" title="When?"/>
 			<Time/>
+			<Footer/>
 		</div>	
 	{/if}
 </div>
