@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { onMount } from "svelte";
-	import * as data from "../data.json";
+	import { onMount } from "svelte"; 
+    import * as data from "../data.json";
 	let svg;
 	let hover_text;
 	let current_val = {
@@ -39,7 +39,7 @@
 
 	onMount(() => {
 		Object.keys(data.byState).forEach((state, i) => {
-			console.log(svg.getElementsByClassName(state.toLowerCase()));
+			// console.log(svg.getElementsByClassName(state.toLowerCase()));
 
 			const target_component = svg.getElementsByClassName(state.toLowerCase())[0];
 			target_component.style.fill = colorScale[normalizePopulation(data.byState[state])];
