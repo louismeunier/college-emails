@@ -24,6 +24,7 @@ import Footer from "./components/Footer.svelte";
 
 	div.sub {
 		min-width: 75%;
+		width: max-content;
 		max-width: 100%;
 		display: grid;
 		grid-auto-flow: row;
@@ -37,7 +38,7 @@ import Footer from "./components/Footer.svelte";
 		color: black;
 	}
 
-	:global(h3) {
+	h3 {
 		font-style: italic;
 		color: gray;
 		font-size: 0.8em;
@@ -65,6 +66,6 @@ import Footer from "./components/Footer.svelte";
 			<Link href="when" title="When?"/>
 			<Time/>
 			<Footer/>
-		</div>	
+		</div>
 	{/if}
 </div>
