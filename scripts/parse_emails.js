@@ -3,8 +3,9 @@ const colleges = require("./data/colleges_full.json");
 
 /**
  * @param {string[]} urls
+ * @param {object} data
  */
-function parseEmails(urls) {
+function parseEmails(urls, data) {
 
     let formatted_statistics = {
         byState: {},
@@ -40,6 +41,7 @@ function parseEmails(urls) {
     })
 
     fs.writeFile(`./client/src/${process.env.GITHUB_ACTIONS ? "data.json" : "dev_data.json"}`, JSON.stringify(formatted_statistics), (err)=>{if (err) throw err});
+    fs.writeFile(`./client/src/${process.env.GITHUB_ACTIONS ? "dates.json" : "dev_dates.json"}`, JSON.stringify(data), (err)=>{if (err) throw err});
     console.log("BY COLLEGE");
     console.table(formatted_statistics.byCollege);
     console.log("BY STATE");

@@ -8,8 +8,7 @@ require('dotenv').config();
 authorizedFunction()
     .then(auth => getAllEmails(auth)
         .then(urls => {
-            fs.writeFile("./client/src/dates.json", JSON.stringify(urls.dates), (err)=>{if (err) throw err; else {console.log("Successfully wrote file")}});
-            parseEmails(urls.urls);
+            parseEmails(urls.urls, urls.dates);
         })
     )
     .catch(err => console.log(err))
