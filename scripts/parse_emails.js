@@ -3,9 +3,9 @@ const colleges = require("./data/colleges_full.json");
 
 /**
  * @param {string[]} urls
- * @param {object} data
+ * @param {object} dates
  */
-function parseEmails(urls, data) {
+function parseEmails(urls, dates) {
 
     let formatted_statistics = {
         byState: {},
@@ -41,11 +41,13 @@ function parseEmails(urls, data) {
     })
 
     fs.writeFile(`./client/src/${process.env.GITHUB_ACTIONS ? "data.json" : "dev_data.json"}`, JSON.stringify(formatted_statistics), (err)=>{if (err) throw err});
-    fs.writeFile(`./client/src/${process.env.GITHUB_ACTIONS ? "dates.json" : "dev_dates.json"}`, JSON.stringify(data), (err)=>{if (err) throw err});
+    fs.writeFile(`./client/src/${process.env.GITHUB_ACTIONS ? "dates.json" : "dev_dates.json"}`, JSON.stringify(dates), (err)=>{if (err) throw err});
     console.log("BY COLLEGE");
     console.table(formatted_statistics.byCollege);
     console.log("BY STATE");
     console.table(formatted_statistics.byState);
+    console.log("BY DAY");
+    console.table(dates);
     console.log(failed_arr)
     console.log(`${Math.round((failed_arr.length/urls.length)*10000) / 100} % loss, due to missing emails. ${[...new Set(failed_arr)].length} unique emails not found.`)
 }
