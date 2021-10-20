@@ -1,5 +1,7 @@
 # college-emails
 
+[![.github/workflows/main.yml](https://github.com/louismeunier/college-emails/actions/workflows/main.yml/badge.svg?branch=main)](https://github.com/louismeunier/college-emails/actions/workflows/main.yml) [![Netlify Status](https://api.netlify.com/api/v1/badges/dd371a6d-634c-45fb-aafa-5504f9f01da5/deploy-status)](https://app.netlify.com/sites/college-emails/deploys)
+
 Colleges love to send email advertisements, so much so that it becomes inbox clutter. This project serves to analyze this spam, and look at some interesting trends in the emails I've received in the past year regarding college.
 
 ## [`/clients`](/clients) 
