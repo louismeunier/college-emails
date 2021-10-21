@@ -3,6 +3,7 @@ const { google } = require('googleapis');
 /**
  * Parses URL from email address
  * @param {string} email 
+ * @returns {string | string[]}
  */
 function parseURL(email) {
     const domain = email.slice(
@@ -10,11 +11,13 @@ function parseURL(email) {
         email.includes(">") 
             ? email.lastIndexOf(">")
             : email.length
-    )
-        .split(".")
-        .slice(-2)
-        .join(".");
-    return domain
+    ).split(".")
+
+    if (domain.length > 2) {
+        return [domain.slice(-2).join("."), domain.slice(-3).join(".")];
+    } else {
+        return domain.slice(-2).join(".");
+    }
 }
 
 /**

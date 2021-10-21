@@ -2,7 +2,7 @@ const fs = require("fs");
 const colleges = require("./data/colleges_full.json");
 
 /**
- * @param {string[]} urls
+ * @param {string[] | [][]} urls
  * @param {object} dates
  */
 function parseEmails(urls, dates) {
@@ -15,30 +15,60 @@ function parseEmails(urls, dates) {
     let failed_arr = [];
 
     urls.forEach(url => {
-        const college_search = colleges[url];
+        if (typeof url == "object") {
+            let failed_twice = false;
+            url.forEach(subU => {
+                const college_search = colleges[subU];
 
-        if (!college_search) {
-            failed_arr.push(url);
-        }
+                if (!college_search) {
+                    if (failed_twice) failed_arr.push(subU);
+                    failed_twice = true;
+                }
+    
+                else {
+                    const { name, state, coords } = college_search;
+    
+                    // add data about state
+                    if (formatted_statistics.byState[state] !== undefined) {
+                        formatted_statistics.byState[state]++;
+                    } else {
+                        formatted_statistics.byState[state] = 1;
+                    }
+    
+                    // add data about college
+                    if (formatted_statistics.byCollege[name] !== undefined) {
+                        formatted_statistics.byCollege[name]++;
+                    } else {
+                        formatted_statistics.byCollege[name] = 1;
+                    }
+                }
+            })
+        } else {
+            const college_search = colleges[url];
 
-        else {
-            const { name, state, coords } = college_search;
-
-            // add data about state
-            if (formatted_statistics.byState[state] !== undefined) {
-                formatted_statistics.byState[state]++;
-            } else {
-                formatted_statistics.byState[state] = 1;
+            if (!college_search) {
+                failed_arr.push(url);
             }
 
-            // add data about college
-            if (formatted_statistics.byCollege[name] !== undefined) {
-                formatted_statistics.byCollege[name]++;
-            } else {
-                formatted_statistics.byCollege[name] = 1;
+            else {
+                const { name, state, coords } = college_search;
+
+                // add data about state
+                if (formatted_statistics.byState[state] !== undefined) {
+                    formatted_statistics.byState[state]++;
+                } else {
+                    formatted_statistics.byState[state] = 1;
+                }
+
+                // add data about college
+                if (formatted_statistics.byCollege[name] !== undefined) {
+                    formatted_statistics.byCollege[name]++;
+                } else {
+                    formatted_statistics.byCollege[name] = 1;
+                }
             }
-        }
-    })
+        }}
+        )
 
     // write files
     fs.writeFile(`./client/src/${process.env.GITHUB_ACTIONS ? "data.json" : "dev_data.json"}`, JSON.stringify(formatted_statistics), (err)=>{if (err) throw err});
