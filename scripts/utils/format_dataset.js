@@ -7,10 +7,16 @@ const csv = require("csv-parser");
  * @returns 
  */
 function parseURL(url) {
-    return url.split(".").slice(-2).join(".").split("/").join("").split("https:").join("").split("http:").join("").trim();
+    // return url.split(".").slice(-2).join(".").split("/").join("").split("https:").join("").split("http:").join("").trim();
+    const just_the_url = url.replace(/^http.:\/\//, "")
+    console.log(just_the_url);
+    const without_www_arr = just_the_url.replace("www.", "")
+    console.log(without_www_arr);
+    const cleaned_up = without_www_arr.replace("/", "")
+    return cleaned_up;
 }
 
-module.exports = function parseData() {
+function parseData() {
     let fmt = {};
 
     fs.createReadStream("constants/colleges_raw.csv")
@@ -24,3 +30,5 @@ module.exports = function parseData() {
         })
         .on("end", () => fs.writeFile("./data/colleges_full.json",JSON.stringify(fmt),()=>{}))    
 }
+
+parseData()
