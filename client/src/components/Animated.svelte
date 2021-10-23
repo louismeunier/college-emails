@@ -5,7 +5,6 @@
     const transition = direction == "left" 
         ? { duration: 1200, delay: delay, x: -500}
         : { duration: 1200, delay: delay, x: 500}
-
 </script>
 
 <div transition:fly={transition}>
