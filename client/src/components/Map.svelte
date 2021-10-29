@@ -1,13 +1,31 @@
 <script lang="ts">
 	import { onMount } from "svelte"; 
     import * as data from "../data.json";
+
 	let svg;
-	let hover_text;
 	let current_val = {
         state: "Hover over a state",
         quantity: "For more information",
-        rank: ""
+        rank: "",
+        top: null
     };
+
+    interface ListVal {
+        name: string
+        value: number
+    }
+
+    function getTopFromState(state:string):ListVal[] {
+        const byCollege = data.byCollege;
+
+        const sortedByState = Object.keys(byCollege)
+            .filter(college => byCollege[college].state == state)
+            .sort((a,b) => byCollege[b].value - byCollege[a].value)
+            .slice(0, 3)
+            .map(college => { return { name: college, value: byCollege[college].value } })
+
+        return sortedByState;
+    }
 
 	const colorScale = [
         '#005f73', 
@@ -47,13 +65,16 @@
             target_component.addEventListener("mouseover", () => {
                 current_val.state = state;
                 current_val.quantity = data.byState[state] + " emails";
-                current_val.rank = "#" + (Object.keys(data.byState).sort((a,b) => data.byState[b] - data.byState[a]).indexOf(state) + 1)
+                current_val.rank = "#" + (Object.keys(data.byState).sort((a,b) => data.byState[b] - data.byState[a]).indexOf(state) + 1);
+                const topCollegesFromState = getTopFromState(state);
+                current_val.top = topCollegesFromState
             })
 
             target_component.addEventListener("mouseout", () => {
                 current_val.state = "Hover over a state"
                 current_val.quantity = "For more information"
                 current_val.rank = ""
+                current_val.top = null
             })
 		});
 	})
@@ -131,6 +152,9 @@
         font-size: 0.8em;
     }
 
+    b {
+        font-weight: 300;
+    }
 </style>
 
 <div class="wrapper">
@@ -146,6 +170,13 @@
             <h2>{current_val.state}</h2>
             <h3>{current_val.quantity}</h3>
             <h3>{current_val.rank}</h3>
+            {#if current_val.top}
+                <ol>
+                    {#each current_val.top as val}
+                        <li><b>{val.name}</b>: {val.value}</li>
+                    {/each}
+                </ol>
+            {/if}
         </div>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 959 593" bind:this={svg}>
             <g class="state">
