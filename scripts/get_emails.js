@@ -14,6 +14,7 @@ function parseURL(email) {
     ).split(".")
 
     if (domain.length > 2) {
+        // console.log([domain.slice(-3).join("."), domain.slice(-2).join(".")])
         return [domain.slice(-2).join("."), domain.slice(-3).join(".")];
     } else {
         return domain.slice(-2).join(".");
