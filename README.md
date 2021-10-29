@@ -1,6 +1,6 @@
 # college-emails
 
-[![.github/workflows/main.yml](https://github.com/louismeunier/college-emails/actions/workflows/main.yml/badge.svg?branch=main)](https://github.com/louismeunier/college-emails/actions/workflows/main.yml) [![Netlify Status](https://api.netlify.com/api/v1/badges/dd371a6d-634c-45fb-aafa-5504f9f01da5/deploy-status)](https://app.netlify.com/sites/college-emails/deploys)
+[![.github/workflows/main.yml](https://github.com/louismeunier/college-emails/actions/workflows/main.yml/badge.svg?branch=main)](https://github.com/louismeunier/college-emails/actions/workflows/main.yml)  [![Netlify Status](https://api.netlify.com/api/v1/badges/dd371a6d-634c-45fb-aafa-5504f9f01da5/deploy-status)](https://app.netlify.com/sites/college-emails/deploys)  [![wakatime](https://wakatime.com/badge/user/c57db544-da7e-4c2e-b0b7-ff7d3d0a1c37/project/4535d80e-a1e1-45cf-b8cf-993cfde2dc45.svg)](https://wakatime.com/badge/user/c57db544-da7e-4c2e-b0b7-ff7d3d0a1c37/project/4535d80e-a1e1-45cf-b8cf-993cfde2dc45)
 
 Colleges love to send email advertisements, so much so that it becomes inbox clutter. This project serves to analyze this spam, and look at some interesting trends in the emails I've received in the past year regarding college.
 
