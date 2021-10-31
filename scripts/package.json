@@ -3,7 +3,6 @@
     "csv-parser": "^3.0.0",
     "dotenv": "^10.0.0",
     "googleapis": "39",
-    "request": "^2.88.2",
     "unzipper": "^0.10.11"
   }
 }
