@@ -3,7 +3,7 @@ on:
     tags:
       - '*'
   schedule:
-    - cron: '0 0 1 * *'
+    - cron: '0 0 * * 0'
 jobs: 
   generate_data_job:
     runs-on: macos-latest
