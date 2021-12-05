@@ -1,4 +1,5 @@
 const { google } = require('googleapis');
+const core = require("@actions/core")
 
 /**
  * Parses URL from email address
@@ -57,6 +58,7 @@ async function getAllEmails(auth) {
             })
             .catch(err => {
                 console.log(err);
+                core.setFailed(err)
             })
     }
 
@@ -87,7 +89,7 @@ async function getAllEmails(auth) {
         // get next page of results if a token was passed
         if (npt) params["pageToken"] = npt;
 
-        const res = await gmail.users.messages.list(params).catch(err => console.log(err));
+        const res = await gmail.users.messages.list(params).catch(err => {console.log(err); core.setFailed(err)});
 
         const { messages, nextPageToken, resultSizeEstimate } = res.data;
 
