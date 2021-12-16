@@ -31,8 +31,8 @@ To create the same type of visualization locally for your own emails, follow the
 - Follow [these steps](https://developers.google.com/workspace/guides/create-project) to create the project.
 - Enable the GMail API with the scope 'https://www.googleapis.com/auth/gmail.readonly'
 - *IMPORTANT*: Make sure you add your email address as a tester for your application. Otherwise, as your project is unverified, it will not work.
-- Download your credentials as JSON, as save it to `scripts/credentials.json`
-- Run `node scripts`, and if your setup was done well, it should prompt you to visit a URL and authenticate. This should save a file `scripts/token.json`.
+- Download your credentials as JSON, and save it to `scripts/credentials.json`
+- Run `node scripts`, and if your setup was done correctly, it should prompt you to visit a URL and authenticate. This should save a file `scripts/token.json`.
 
 ### Generating the data
 - Run `node scripts` a second time. It should now actually run the program, and regularly print output to the screen indicating progress. 
