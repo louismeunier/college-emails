@@ -13,4 +13,5 @@
 	}
 </style>
 
-<h3 class="footer">last updated {fmt_date}</h3>
+<h3>Data is updated weekly, and uses data from the past year. You can learn more <a href="https://github.com/louismeunier/college-emails">here.</a></h3>
+<h3 class="footer">Last updated {fmt_date}</h3>

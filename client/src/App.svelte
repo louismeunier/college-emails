@@ -12,7 +12,13 @@
 	let visible = false;
 	onMount(() => visible = true)
 
-	let hovered;
+	const envelope = "✉️"
+	const envelopeArrow = "📩" 
+	let curEmoji = envelope;
+
+	setInterval(() => { 
+		curEmoji = curEmoji == envelope ? envelopeArrow : envelope
+	}, 500)
 </script>
 
 <style>
@@ -32,21 +38,27 @@
 		max-width: 100%;
 	}
 	h1 {
-		text-decoration: double underline;
+		text-decoration: underline;
 		font-size: 3em;
 		color: black;
-	}
-
-	h3 {
-		font-style: italic;
-		color: gray;
-		font-size: 0.8em;
 	}
 
 	.header {
 		display: grid;
 		grid-auto-flow: row;
-		/* justify-items: center; */
+		justify-items: center;
+	}
+
+	i {
+		font-size: 1.1em;
+	}
+
+	h2 {
+		font-weight: 0;
+	}
+
+	span {
+		font-size: 4em;
 	}
 </style>
 
@@ -54,8 +66,11 @@
 	{#if visible}
 		<div transition:fly={{duration: 1200, delay: 500, x: -500}} class="header">
 			<h1>My College Emails</h1>
-			<h2>Programatically generated statistics about where colleges have been emailing me from.</h2>
-			<h3>Data is updated weekly, and uses data from the past year. You can learn more <a href="https://github.com/louismeunier/college-emails">here.</a></h3>
+			<span>{curEmoji}</span>
+			<h2>Automatically-generated statistics about my college admissions related emails, as a NYS senior.</h2>
+			<i>Created by <a href="https://github.com/louismeunier" target="_blank">Louis Meunier.</a></i>
+		<hr/>
+
 		</div>
 		<Animated direction="right" delay={750}>
 			<Link href="where" title="Where?"/>
