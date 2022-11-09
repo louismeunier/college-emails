@@ -13,5 +13,6 @@
 	}
 </style>
 
-<h3>Data is updated weekly, and uses data from the past year. You can learn more <a href="https://github.com/louismeunier/college-emails">here.</a></h3>
+<h3>Data <s>is</s> WAS updated weekly, <s>and uses data from the past year.</s> You can learn more <a href="https://github.com/louismeunier/college-emails">here.</a>
+	<br><em>As I've graduated high school and no longer receive dozens of college emails a day, data is no longer automatically updated!</em></h3>
 <h3 class="footer">Last updated {fmt_date}</h3>
